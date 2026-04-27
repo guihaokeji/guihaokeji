@@ -2,226 +2,481 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuiHao Technology - Industrial Sensing & Monitoring Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>GuiHao Tech · 工业智能传感与结构健康监测</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
         body {
-            background-color: #121212;
-            color: #fff;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: #0b0d17;
+            color: #ebf2fa;
+            line-height: 1.5;
+            overflow-x: hidden;
         }
-        /* 导航栏 */
-        nav {
-            background-color: #1a1a1a;
-            padding: 1rem 5%;
+        html {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #1e1f2c; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 13, 23, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 18px 40px;
+            max-width: 1440px;
+            margin: 0 auto;
         }
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #00d8b6;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #a5f3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            align-items: center;
         }
         .nav-links a {
-            color: #fff;
             text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.3s;
+            font-weight: 500;
+            color: #ccddf8;
+            transition: 0.2s;
+            font-size: 0.9rem;
         }
-        .nav-links a:hover {
-            color: #00d8b6;
+        .nav-links a:hover { color: #60a5fa; text-shadow: 0 0 6px #3b82f6; }
+        .gradient-btn {
+            background: linear-gradient(95deg, #1e3a8a, #3b82f6);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 80px;
+            font-weight: 600;
+            box-shadow: 0 0 8px rgba(59,130,246,0.4);
         }
-        /* 主横幅 */
+        .gradient-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 16px #3b82f6;
+        }
+
         .hero {
+            min-height: 100vh;
+            background: radial-gradient(ellipse at 30% 40%, #0e142a, #080a12);
+            display: flex;
+            align-items: center;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, rgba(59,130,246,0.02) 0px, rgba(59,130,246,0.02) 2px, transparent 2px, transparent 8px);
+            animation: moveGrid 25s infinite linear;
+        }
+        @keyframes moveGrid {
+            0% { transform: translate(0,0) rotate(0deg); }
+            100% { transform: translate(60px,60px) rotate(2deg); }
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-left h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(125deg, #ffffff, #7aa9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+        }
+        .hero-left p {
+            font-size: 1.1rem;
+            color: #9bb5e0;
+            margin-bottom: 32px;
+            max-width: 540px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 48px;
+        }
+        .stat h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #60a5fa;
+        }
+        .btn-glow {
+            background: linear-gradient(95deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 80px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 12px #2563eb;
+            transition: 0.3s;
+            margin-right: 20px;
+        }
+        .btn-outline-light {
+            border: 1px solid #60a5fa;
+            background: transparent;
+            color: #bbd7fb;
+            padding: 14px 32px;
+            border-radius: 80px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .btn-glow:hover { transform: translateY(-4px); filter: brightness(1.08); }
+        .btn-outline-light:hover { background: rgba(59,130,246,0.12); color: white; }
+
+        .inquiry-card {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 32px 28px;
+            border: 1px solid rgba(59,130,246,0.4);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+        }
+        .inquiry-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            background: #111622;
+            border: 1px solid #2d3a57;
+            padding: 14px 18px;
+            border-radius: 60px;
+            color: white;
+            font-size: 0.9rem;
+        }
+        .form-group textarea {
+            border-radius: 28px;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+        }
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(95deg, #1e3a8a, #2563eb);
+            border: none;
+            padding: 14px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+        }
+        .submit-btn:hover { background: #2563eb; box-shadow: 0 0 14px #3b82f6; }
+
+        .section {
+            padding: 110px 0;
+        }
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
             text-align: center;
-            padding: 4rem 5%;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('');
+            margin-bottom: 20px;
+        }
+        .section-sub {
+            text-align: center;
+            color: #8ba2cf;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 28px;
+        }
+        .card {
+            background: #0f1422;
+            border-radius: 36px;
+            padding: 28px 24px;
+            transition: 0.25s;
+            border: 1px solid #1f2a44;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #3b82f6;
+            box-shadow: 0 0 24px rgba(59,130,246,0.2);
+        }
+        .card i {
+            font-size: 2.5rem;
+            color: #60a5fa;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 32px;
+        }
+        .solution-card {
+            background: linear-gradient(145deg, #101624, #0b0f1b);
+            border-radius: 32px;
+            overflow: hidden;
+            border-left: 4px solid #3b82f6;
+        }
+        .solution-img {
+            width: 100%;
+            height: 180px;
             background-size: cover;
             background-position: center;
         }
-        .hero h1 {
-            color: #00d8b6;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .solution-content {
+            padding: 28px 28px 32px;
         }
-        .hero p {
-            color: #aaa;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-        /* 产品介绍 */
-        .products {
-            padding: 3rem 5%;
-        }
-        .section-title {
-            text-align: center;
-            color: #00d8b6;
-            margin-bottom: 2rem;
+        .solution-content i {
             font-size: 1.8rem;
+            color: #60a5fa;
+            margin-bottom: 12px;
+            display: inline-block;
         }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .solution-content h3 {
+            font-size: 1.5rem;
+            margin: 8px 0 12px;
         }
-        .product-card {
-            background-color: #1a1a1a;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #2d2d2d;
-            transition: transform 0.3s;
+
+        .about-grid {
+            display: flex;
+            gap: 64px;
+            align-items: center;
+            flex-wrap: wrap;
         }
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: #00d8b6;
+        .about-text {
+            flex: 1;
         }
-        .product-card h3 {
-            color: #00d8b6;
-            margin-bottom: 1rem;
+        .about-image {
+            flex: 1;
+            background: linear-gradient(145deg,#151d32,#0c1022);
+            height: 320px;
+            border-radius: 36px;
+            background-size: cover;
+            background-position: center;
         }
-        /* 询盘表单 */
-        .contact-form {
-            max-width: 600px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background-color: #1a1a1a;
-            border-radius: 12px;
+
+        .footer {
+            background: #05070f;
+            padding: 56px 0 32px;
+            border-top: 1px solid #16223c;
         }
-        .form-group {
-            margin-bottom: 1.5rem;
+        @media (max-width: 1100px) {
+            .product-grid { grid-template-columns: repeat(2,1fr); }
+            .hero .container { grid-template-columns: 1fr; text-align: center; }
+            .hero-stats { justify-content: center; }
         }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #ccc;
-        }
-        select, input, textarea {
-            width: 100%;
-            padding: 1rem;
-            background-color: #2d2d2d;
-            border: 1px solid #3d3d3d;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 1rem;
-        }
-        select:focus, input:focus, textarea:focus {
-            outline: none;
-            border-color: #00d8b6;
-        }
-        button {
-            width: 100%;
-            padding: 1rem;
-            background-color: #00d8b6;
-            color: #121212;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #00b89b;
-        }
-        /* 页脚 */
-        footer {
-            background-color: #1a1a1a;
-            text-align: center;
-            padding: 2rem;
-            color: #777;
+        @media (max-width: 700px) {
+            .product-grid, .solutions-grid { grid-template-columns: 1fr; }
+            .nav-container { flex-direction: column; gap: 18px; }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav>
-        <div class="logo">GUIHAO TECHNOLOGY</div>
+
+<div class="navbar">
+    <div class="nav-container">
+        <div class="logo">GuiHao Technology</div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#products">Products</a>
-            <a href="#contact">Contact Us</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#about">Company</a>
+            <a href="#inquiry" class="gradient-btn">Request Quote</a>
         </div>
-    </nav>
+    </div>
+</div>
 
-    <!-- 主横幅 -->
-    <section class="hero" id="home">
-        <h1>Industrial Sensing & Monitoring Solutions</h1>
-        <p>Professional manufacturer of pipeline tracking, environment monitoring, sensor acquisition & structural stress detection systems.</p>
-    </section>
-
-    <!-- 产品介绍 -->
-    <section class="products" id="products">
-        <h2 class="section-title">Our Products</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <h3>Pipeline Tracking System</h3>
-                <p>High-precision markers, transmitters and receivers for pipeline location and monitoring.</p>
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-left" data-aos="fade-right">
+            <h1>Industrial Sensing &<br><span style="color:#60a5fa;">Structural Health</span> Monitoring</h1>
+            <p>Precision pipeline tracking, environmental sensing, stress detection — providing comprehensive IoT monitoring solutions for smart cities & infrastructure.</p>
+            <div>
+                <a href="#products" class="btn-glow">Explore Tech →</a>
+                <a href="#about" class="btn-outline-light">Learn More</a>
             </div>
-            <div class="product-card">
-                <h3>Environment Monitoring Sensors</h3>
-                <p>Sensors for negative oxygen ion, pit and other environmental parameter monitoring.</p>
-            </div>
-            <div class="product-card">
-                <h3>Sensor Acquisition Systems</h3>
-                <p>Reliable data acquisition solutions for industrial and environmental applications.</p>
-            </div>
-            <div class="product-card">
-                <h3>Stress Detection Systems</h3>
-                <p>Advanced systems for bolt and structural stress monitoring in engineering projects.</p>
+            <div class="hero-stats">
+                <div class="stat"><h3 class="counter" data-target="11">0</h3><p>Years R&D</p></div>
+                <div class="stat"><h3 class="counter" data-target="35">0</h3><p>+ Countries</p></div>
+                <div class="stat"><h3 class="counter" data-target="200">0</h3><p>Projects Delivered</p></div>
             </div>
         </div>
-    </section>
+        <div data-aos="fade-left">
+            <div class="inquiry-card">
+                <h3>Request a quotation</h3>
+                <p>Get technical spec & pricing within 24h</p>
+                <form action="#" method="post">
+                    <div class="form-group"><input type="text" placeholder="Full name *" required></div>
+                    <div class="form-group"><input type="email" placeholder="Business email *" required></div>
+                    <div class="form-group"><input type="tel" placeholder="WhatsApp / WeChat"></div>
+                    <div class="form-group">
+                        <select>
+                            <option>Product category</option>
+                            <option>Pipeline tracking system</option>
+                            <option>Environmental sensors</option>
+                            <option>Sensor acquisition system</option>
+                            <option>Stress & bolt monitoring</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><textarea rows="2" placeholder="Project details / application scenario..."></textarea></div>
+                    <button type="submit" class="submit-btn">Send inquiry →</button>
+                </form>
+                <div style="margin-top: 18px; font-size: 0.75rem; text-align: center;">
+                    <i class="fas fa-shield-alt"></i> Urgent: +86 158 2754 8986 (WhatsApp)<br>
+                    <i class="fas fa-envelope"></i> sylvia@yizhongrou.com
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- 询盘表单 -->
-    <section class="contact-form" id="contact">
-        <h2 class="section-title">Get A Quote</h2>
-        <form action="https://formspree.io/f/xrbzgywe" method="POST">
-            <div class="form-group">
-                <label for="product">Product Category</label>
-                <select id="product" name="category" required>
-                    <option value="">Select your needs</option>
-                    <option value="pipeline">Pipeline Tracking System</option>
-                    <option value="environment">Environment Monitoring Sensors</option>
-                    <option value="sensor">Sensor Acquisition System</option>
-                    <option value="stress">Structural Stress Detection System</option>
-                    <option value="custom">Custom Solution</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="quantity">Quantity / Project Demand</label>
-                <input type="text" id="quantity" name="quantity" placeholder="e.g. 1 set, 10 sets, project customization">
-            </div>
-            <div class="form-group">
-                <label for="name">Your Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-                <label for="contact">Email / WhatsApp</label>
-                <input type="text" id="contact" name="contact" placeholder="Your contact" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Your Requirement</label>
-                <textarea id="message" name="message" rows="4" placeholder="Please describe your project details..."></textarea>
-            </div>
-            <button type="submit">Submit Inquiry</button>
-        </form>
-    </section>
+<section id="products" class="section container">
+    <div data-aos="fade-up"><div class="section-title">Core Product Lines</div><div class="section-sub">High-precision sensing · Industrial IoT · Full-customizable</div></div>
+    <div class="product-grid">
+        <div class="card" data-aos="zoom-in"><i class="fas fa-broadcast-tower"></i><h3>Pipeline & Cable Tracking</h3><p>High-accuracy markers, transmitters and locators for underground pipeline location and right-of-way monitoring.</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-leaf"></i><h3>Environmental Monitoring</h3><p>Negative oxygen ion, soil moisture, ultrasonic micro‑weather stations and automatic weather sensors.</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-microchip"></i><h3>Sensor Acquisition Systems</h3><p>Multi‑channel data loggers, edge computing gateways for industrial and environmental sensing networks.</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-chart-line"></i><h3>Structural Stress Detection</h3><p>Bolt tension monitoring, fiber‑optic stress analysis & structural deformation early warning systems.</p></div>
+    </div>
+</section>
 
-    <!-- 页脚 -->
-    <footer>
-        <p>&copy; 2025 GuiHao Technology (Wuhan) Co., Ltd. All rights reserved.</p>
-        <p>Email: sylvia@yizhongrou.com | WhatsApp: +86 15827008000</p>
-    </footer>
+<section id="solutions" class="section container">
+    <div data-aos="fade-up"><div class="section-title">Industry Solutions</div><div class="section-sub">Deployed in infrastructure, smart cities, energy & environment</div></div>
+    <div class="solutions-grid">
+        <div class="solution-card" data-aos="fade-right">
+            <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=400&fit=crop');"></div>
+            <div class="solution-content">
+                <i class="fas fa-subway"></i>
+                <h3>Smart City & Utilities</h3>
+                <p>Smart pole sensors · underground cable monitoring · urban drainage and water level detection.</p>
+            </div>
+        </div>
+        <div class="solution-card" data-aos="fade-left">
+            <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=800&h=400&fit=crop');"></div>
+            <div class="solution-content">
+                <i class="fas fa-hard-hat"></i>
+                <h3>Bridge & Tunnel Health</h3>
+                <p>Real‑time structural stress, bolt loosening detection, crack monitoring for large civil infrastructure.</p>
+            </div>
+        </div>
+        <div class="solution-card" data-aos="fade-right">
+            <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1581092335871-2e5d4b0c6e0c?w=800&h=400&fit=crop');"></div>
+            <div class="solution-content">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Industrial Automation</h3>
+                <p>PLC & SCADA integration, vibration monitoring, sensor data fusion for predictive maintenance.</p>
+            </div>
+        </div>
+        <div class="solution-card" data-aos="fade-left">
+            <div class="solution-img" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=400&fit=crop');"></div>
+            <div class="solution-content">
+                <i class="fas fa-globe-asia"></i>
+                <h3>Environment & Agriculture</h3>
+                <p>Forest fire warning, agricultural weather stations, soil moisture & negative oxygen ion monitoring.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section container">
+    <div class="about-grid">
+        <div class="about-text" data-aos="fade-right">
+            <div class="section-title" style="text-align: left;">Who We Are</div>
+            <p style="font-size:1.05rem; color:#cbdded;">GuiHao Technology Wuhan Co., Ltd. is a high‑tech enterprise integrating R&D, manufacturing and global sales of industrial IoT monitoring equipment. Certified with ISO9001, our systems are widely used for pipeline tracking, environmental sensing, structural stress detection, and smart city infrastructure.</p>
+            <p style="margin-top: 24px;">With a strong focus on sensors, edge computing and wireless transmission, we help clients reduce operational risks and improve asset longevity.</p>
+            <div style="margin-top: 36px;">
+                <i class="fas fa-map-marker-alt"></i> Building 32, Liandong U Valley, 259 Xingsan Road, Hannan District, Wuhan, China
+            </div>
+        </div>
+        <div class="about-image" data-aos="fade-left" style="background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&h=400&fit=crop');"></div>
+    </div>
+</section>
+
+<div class="footer">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+            <div><h3 style="color: white;">GuiHao Technology Co., Ltd.</h3><p>Industrial sensing pioneer</p></div>
+            <div><i class="fas fa-map-marker-alt"></i> Wuhan, Hubei, China · Smart manufacturing base</div>
+            <div>
+                <i class="fab fa-whatsapp"></i> +86 158 2754 8986<br>
+                <i class="fas fa-envelope"></i> sylvia@yizhongrou.com
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 56px;">© 2026 GuiHao Technology Wuhan Co., Ltd. | ICP: 鄂ICP备2023016828号-1</div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true, offset: 80 });
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.target);
+                let current = 0;
+                const step = target / 45;
+                const update = () => {
+                    current += step;
+                    if (current < target) {
+                        el.innerText = Math.floor(current);
+                        requestAnimationFrame(update);
+                    } else {
+                        el.innerText = target;
+                    }
+                };
+                update();
+                obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+</script>
 </body>
 </html>
